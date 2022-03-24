@@ -1,11 +1,8 @@
 const express = require('express');
+const CollectionController = require('./controllers/CollectionController')
 
 const routes = express.Router();
 
-routes.get('/', function(req, res) {
-    return res.json({
-        hello: 'world',
-    })
-})
+routes.post('/collections', CollectionController.store)
 
 module.exports = routes;

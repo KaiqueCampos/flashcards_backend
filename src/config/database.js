@@ -5,7 +5,7 @@ module.exports = {
     password: "",
     database: "flashcard_database",
     define: {
-        tinestamps: true,
+        timestamps: true,
         underscored: true,
     }
 }
