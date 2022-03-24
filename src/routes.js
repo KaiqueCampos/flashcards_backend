@@ -11,5 +11,4 @@ routes.post('/collections', CollectionController.store)
 routes.get('/collections/:collection_id/flashcards', FlashcardsController.index)
 routes.post('/collections/:collection_id/flashcards', FlashcardsController.store)
 
-
 module.exports = routes;

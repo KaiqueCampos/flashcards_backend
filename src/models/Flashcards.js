@@ -3,7 +3,8 @@ const { Model, DataTypes } = require("sequelize");
 class Flashcards extends Model {
     static init(sequelize) {
         super.init({
-            name: DataTypes.STRING(75), 
+            front_information: DataTypes.STRING, 
+            back_information: DataTypes.STRING, 
         }, {
             sequelize,
         })
