@@ -4,17 +4,27 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
+    "run-tests" : "jest",
+    "run-after-tests": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
+    "test": "npm-run-all run-tests run-after-tests --continue-on-error",
+    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mysql2": "^2.3.3",
     "sequelize": "^6.17.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "sequelize-cli": "^6.4.1"
+    "npm-run-all": "^4.1.5",
+    "sequelize-cli": "^6.4.1",
+    "supertest": "^6.2.2"
   }
 }

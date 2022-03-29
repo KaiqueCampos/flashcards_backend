@@ -2,7 +2,9 @@ const Collection = require('../models/Collection')
 
 module.exports = {
     async index(req, res) {
-        const collection = await Collection.findAll()
+        const collection = await Collection.findAll({
+            attributes: ['id', 'name']
+        })
         return res.json(collection);
     },
 
