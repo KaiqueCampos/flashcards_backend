@@ -16,6 +16,11 @@ module.exports = {
                 ]
             }
         })
+
+        if (collection === null){
+            return res.status(404).send({message: 'Collection not found'})
+        }
+
         return res.json(collection);
     },
 
@@ -36,5 +41,20 @@ module.exports = {
         })
 
         return res.json(flashcards);
+    },
+
+    async delete(req, res) {
+        const { flashcard_id } = req.params
+
+        const flashcardExists = await Flashcards.findByPk(flashcard_id)
+        if (flashcardExists === null){
+            return res.status(404).json({message: 'Flashcards don\'t exist'});
+        }
+
+        const flashcardsTobeDeleted = await Flashcards.destroy({
+            where: { id: flashcard_id }
+        })
+
+        return res.json(flashcardsTobeDeleted)
     }
 }
