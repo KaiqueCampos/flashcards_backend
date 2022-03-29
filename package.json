@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
-    "run-tests" : "jest",
-    "run-after-tests": "cross-env NODE_ENV=test sequelize db:migrate:undo:all ",
+    "pretest": "cross-env NODE_ENV=test NODE_NO_WARNINGS=1 sequelize db:migrate",
+    "run-tests": "cross-env NODE_NO_WARNINGS=1 jest --silent",
+    "run-after-tests": "cross-env NODE_ENV=test NODE_NO_WARNINGS=1 sequelize db:migrate:undo:all ",
     "test": "npm-run-all run-tests run-after-tests --continue-on-error",
-    "test:watch": "cross-env NODE_ENV=test jest --watchAll"
+    "test:watch": "cross-env NODE_ENV=test NODE_NO_WARNINGS=1 jest --watchAll"
   },
   "author": "",
   "license": "ISC",
